@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "embed-server"
+version = "1.1.0"
+description = "OpenAI-compatible embedding server — CPU, lightweight, Hermes plugin"
+authors = [{name = "li2810081"}]
+license = {text = "MIT"}
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "fastembed",
+    "fastapi",
+    "uvicorn",
+]
+
+[project.scripts]
+embed-server = "embed_server.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]

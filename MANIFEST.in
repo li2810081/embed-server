@@ -1,0 +1,3 @@
+recursive-include src/embed_server/plugin/model *
+include src/embed_server/plugin/plugin.yaml
+include src/embed_server/plugin/after-install.md

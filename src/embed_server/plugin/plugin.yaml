@@ -1,0 +1,12 @@
+name: embed-server
+version: 1.1.0
+description: "OpenAI-compatible embedding server powered by fastembed. Drop-in replacement for Ollama's /v1/embeddings endpoint on port 11434."
+author: "local"
+hooks:
+  - on_session_start
+  - on_session_end
+requires_env:
+  - name: EMBED_SERVER_PORT
+    description: "Port to listen on (default: 11434)"
+  - name: EMBED_SERVER_MODEL
+    description: "FastEmbed model name (default: nomic-embed-text-v1.5)"

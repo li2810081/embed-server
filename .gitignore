@@ -1,0 +1,12 @@
+# Git LFS for model files
+src/embed_server/plugin/model/**/onnx/*.onnx filter=lfs diff=lfs merge=lfs -text
+*.onnx filter=lfs diff=lfs merge=lfs -text
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+.env

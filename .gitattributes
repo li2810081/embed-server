@@ -1,0 +1,2 @@
+src/embed_server/plugin/model/**/onnx/*.onnx filter=lfs diff=lfs merge=lfs -text
+*.onnx filter=lfs diff=lfs merge=lfs -text
