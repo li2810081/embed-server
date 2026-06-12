@@ -38,24 +38,47 @@ python server.py --port 11434
 
 ```
 embed-server/
-├── plugin.yaml              # Hermes 插件清单
-├── __init__.py               # 插件钩子 + /embed 命令
-├── process_manager.py        # 子进程生命周期管理
-├── server.py                 # FastAPI Embedding 服务
-├── model/                    # 内置模型 (fastembed 缓存)
-│   └── models--nomic-ai--nomic-embed-text-v1.5/
-│       └── snapshots/
-│           └── e9b67630.../
-│               ├── config.json
-│               ├── tokenizer.json
-│               ├── tokenizer_config.json
-│               ├── special_tokens_map.json
-│               └── onnx/
-│                   └── model.onnx          (131MB, LFS)
-├── README.md                 # 英文文档
-├── README.zh.md              # 中文文档 (本文件)
-└── .gitattributes            # Git LFS 配置
+├── pyproject.toml              # Python 包配置
+├── src/embed_server/
+│   ├── __init__.py
+│   ├── cli.py                  # CLI 入口 (install/doctor/init/start)
+│   ├── server.py               # FastAPI Embedding 服务
+│   ├── process_manager.py      # 进程生命周期管理
+│   └── plugin/                 # Hermes 插件目录
+│       ├── plugin.yaml         # Hermes 插件清单
+│       ├── __init__.py         # 插件钩子 + /embed 命令
+│       ├── process_manager.py  # 子进程管理
+│       ├── server.py           # 插件内服务
+│       └── model/              # 内置模型 (~135MB, LFS)
+├── README.md                   # 英文文档
+├── README.zh.md                # 中文文档 (本文件)
+└── .gitattributes              # Git LFS 配置
 ```
+
+## 🚀 快速安装
+
+```bash
+# 1. 安装包
+pip install embed-server
+
+# 2. 激活到 Hermes（自动 symlink + 装依赖）
+embed-server install
+
+# 3. 体检
+embed-server doctor
+
+# 4. 重启网关
+hermes gateway restart
+```
+
+## 🔧 CLI 命令
+
+| 命令 | 说明 |
+|------|------|
+| `embed-server install` | 激活插件到 Hermes |
+| `embed-server doctor`  | 完整诊断（依赖/模型/端口/环境） |
+| `embed-server init`    | 交互式安装向导 |
+| `embed-server start`   | 独立运行服务 |
 
 ## 📡 API 接口
 

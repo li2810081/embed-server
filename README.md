@@ -41,23 +41,35 @@ embed-server/
 
 ## 🚀 Quick Start
 
-### Prerequisites
+### Install
 
 ```bash
-pip install fastembed fastapi uvicorn
-```
-
-### Standalone (no Hermes)
-
-```bash
-python server.py --port 11434
+pip install embed-server
 ```
 
 ### As Hermes Plugin
 
 ```bash
-hermes plugins install https://github.com/li2810081/embed-server.git
-hermes plugins enable embed-server
+# Activate into Hermes (symlink + install deps)
+embed-server install
+
+# Health check
+embed-server doctor
+
+# Restart Hermes gateway
+hermes gateway restart
+```
+
+### Standalone (no Hermes)
+
+```bash
+embed-server start --port 11434
+```
+
+Or directly:
+```bash
+python -m embed_server start
+```
 hermes gateway restart
 ```
 
