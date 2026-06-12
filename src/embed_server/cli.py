@@ -69,7 +69,9 @@ def cmd_install(args):
 
     # Remove existing
     if target.exists():
-        if target.is_symlink() or target.is_dir():
+        if target.is_symlink():
+            target.unlink()
+        elif target.is_dir():
             shutil.rmtree(target)
         else:
             target.unlink()
